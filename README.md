@@ -51,9 +51,9 @@ http://127.0.0.1:9001
 
 Sign in using ```RUSTFS_ACCESS_KEY``` and ```RUSTFS_SECRET_KEY``` from [`.env`](.env)
 
-<img width="872" height="458" alt="image" src="https://github.com/user-attachments/assets/e9154525-fe8c-41c3-b5d6-e4b46b050066" />
 
 
-Add new bucket ```mybucket```
+
+https://github.com/user-attachments/assets/48d73294-d796-46bc-a943-d3bf8fc6c0b0
 
 
