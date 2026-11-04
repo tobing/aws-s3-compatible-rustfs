@@ -1,76 +1,59 @@
-# n8n v2 with numpy and pandas
+# AWS S3 Compatible Storage with RustFS  
 
-n8n v2 queue mode with separated task runner and worker. Integrated with PostgreSQL and Redis.
+A self-hosted, S3-compatible object storage deployment using RustFS and Docker Compose.  
 
-Rebuild task runner with numpy and pandas using Dockerfile and also enabled blocked nodes with ```NODES_EXCLUDE="[]"```
+This project provides an S3-compatible storage environment with support for bucket management, IAM users, access policies.  
 
-## Start
+Features
+- S3 Compatibility – Access object storage using S3-compatible application WinSCP.  
+- Docker Compose – Simple containerized deployment.  
+- IAM Users – Create separate users for applications and services.  
+- Bucket-Level Policies – Configure access permissions for individual buckets.  
+- Access Control – Support ReadOnly, ReadWrite, and ReadWriteDelete permission models.  
+- Public Access – Configure anonymous read access when required.  
 
+# Start   
 Clone this repo
 ```
-git clone https://github.com/tobing/n8n-v2-with-numpy-pandas.git
-cd n8n-v2-with-numpy-pandas
+git clone https://github.com/tobing/aws-s3-compatible-rustfs.git
+cd aws-s3-compatible-rustfs
 ```
 
-<br />
-
-
-To start n8n simply start docker-compose by executing the following
-command in the current folder.
-
-**IMPORTANT:** Change the default users and passwords in the [`.env`](.env) file!
-
+Modify ```RUSTFS_ACCESS_KEY``` and ```RUSTFS_SECRET_KEY``` in [`.env`](.env)
 ```
-docker compose up -d --build
+RUSTFS_ACCESS_KEY=myadmin #openssl rand -base64 16
+RUSTFS_SECRET_KEY=password123 #openssl rand -base64 32
 ```
 
-<br />
-
-To stop it execute:
-
+Change permission for [`data`](data) and [`logs`](logs)
 ```
-docker-compose stop
+sudo chown -R 10001:10001 data logs
 ```
 
-<br />
-
-Verify if n8n, worker and task runner images are the same version:
-
+Run with docker compose
 ```
-docker inspect n8n-main n8n-worker n8n-custom-runner | grep image.version
+docker compose up -d
 ```
 
-<br />
-
-To access it, open with web browser:
+Check if any error
 ```
-http://localhost:5678
-```
-For custom domain modify these lines in [`docker-compose.yaml`](docker-compose.yaml)
-
-```
-- VUE_APP_URL_BASE_API=http://localhost:5678/
-- N8N_EDITOR_BASE_URL=http://localhost:5678/ 
-- WEBHOOK_URL=http://localhost:5678/ 
+docker compose logs
 ```
 
-<br />  
 
-## Configuration
 
-The default name of the database, user and password for PostgreSQL and also n8n version can be changed in the [`.env`](.env) file in the current directory.
+# Configuration
 
-External packages for task runner can be modified with ```Dockerfile``` and ```n8n-task-runners.json``` inside [`n8n-custom-runner`](n8n-custom-runner)
+Access web console from
+```
+http://127.0.0.1:9001
+```
 
-Task runner included these external packages:
+Sign in using ```RUSTFS_ACCESS_KEY``` and ```RUSTFS_SECRET_KEY``` from [`.env`](.env)
 
-**NODE**: ```moment,uuid,axios,cheerio,form-data,node-fetch,csv-parse```
+<img width="872" height="458" alt="image" src="https://github.com/user-attachments/assets/e9154525-fe8c-41c3-b5d6-e4b46b050066" />
 
-**PYTHON**: ```numpy,pandas```
 
-<br />
+Add new bucket ```mybucket```
 
-To verify the external packages working properly, import ```n8n-workflow.json``` from [`verify-external-modules`](verify-external-modules) to n8n then execute workflow.
-
-The workflow has 3 nodes. Manual trigger, Node Modules Test and Python Modules Test.
 
