@@ -21,8 +21,8 @@ cd aws-s3-compatible-rustfs
 
 Modify ```RUSTFS_ACCESS_KEY``` and ```RUSTFS_SECRET_KEY``` in [`.env`](.env)
 ```
-RUSTFS_ACCESS_KEY=myadmin #openssl rand -base64 16
-RUSTFS_SECRET_KEY=password123 #openssl rand -base64 32
+RUSTFS_ACCESS_KEY=myadmin
+RUSTFS_SECRET_KEY=password123
 ```
 
 Change permission for [`data`](data) and [`logs`](logs)
