@@ -2,7 +2,7 @@
 
 A self-hosted, S3-compatible object storage deployment using RustFS and Docker Compose.  
 
-This project provides an S3-compatible storage environment with support for bucket management, IAM users, access policies.  
+This setup provides an S3-compatible storage environment with support for bucket management, IAM users, access policies.  
 
 Features
 - S3 Compatibility – Access object storage using S3-compatible application WinSCP.  
@@ -25,7 +25,7 @@ RUSTFS_ACCESS_KEY=myadmin
 RUSTFS_SECRET_KEY=password123
 ```
 
-Change permission for [`data`](data) and [`logs`](logs)
+Change permission for [`data`](data) and [`logs`](logs) (use wsl in Windows)
 ```
 sudo chown -R 10001:10001 data logs
 ```
