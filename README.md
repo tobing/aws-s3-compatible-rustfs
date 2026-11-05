@@ -58,6 +58,6 @@ Bucket level policy: [`PublicReadOnly-mybucket.json`](PublicReadOnly-mybucket.js
 
 
 
-https://github.com/user-attachments/assets/48d73294-d796-46bc-a943-d3bf8fc6c0b0
+https://github.com/user-attachments/assets/ae09ea35-bc81-4d43-be9d-8d7056452f01
 
 
