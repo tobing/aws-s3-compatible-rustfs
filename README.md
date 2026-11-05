@@ -52,6 +52,10 @@ http://127.0.0.1:9001
 Sign in using ```RUSTFS_ACCESS_KEY``` and ```RUSTFS_SECRET_KEY``` from [`.env`](.env)
 
 
+Note for Policies: (Change ```mybucket``` to your bucket name)  
+User level policy  : [`ReadOnly-mybucket.json`](ReadOnly-mybucket.json), [`ReadWrite-mybucket.json`](ReadWrite-mybucket.json), [`ReadWriteDelete-mybucket.json`](ReadWriteDelete-mybucket.json)  
+Bucket level policy: [`PublicReadOnly-mybucket.json`](PublicReadOnly-mybucket.json)   
+
 
 
 https://github.com/user-attachments/assets/48d73294-d796-46bc-a943-d3bf8fc6c0b0
